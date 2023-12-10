@@ -7,9 +7,6 @@ import { DiaryDispatchConext } from "../App";
 import { getStringDate } from "../util/date";
 import { emotionList } from "../util/emotion";
 
-const env = process.env;
-env.PUBLIC_URL = env.PUBLIC_URL || "";
-
 const DiaryEditor = ({ isEdit, originData }) => {
   const contentRef = useRef();
   const [content, setContent] = useState("");
