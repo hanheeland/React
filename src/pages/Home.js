@@ -31,10 +31,6 @@ const Home = () => {
     }
   }, [diaryList, curDate]);
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-
   const increaseMonth = () => {
     setCurdate(
       new Date(curDate.getFullYear(), curDate.getMonth() + 1, curDate.getDate())
