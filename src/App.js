@@ -1,4 +1,4 @@
-import React, { useReducer, useRef } from "react";
+import React, { useEffect, useReducer, useRef } from "react";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
@@ -33,6 +33,7 @@ const reducer = (state, action) => {
     default:
       return state;
   }
+  localStorage.setItem("diary", JSON.stringify(newState));
   return newState;
 };
 
@@ -73,8 +74,20 @@ const dummyData = [
 ];
 
 function App() {
-  const [data, dispatch] = useReducer(reducer, dummyData);
-  const dataId = useRef(6); // dummy data 5번까지 존재하므로 6번부터 시작
+  const [data, dispatch] = useReducer(reducer, []);
+
+  useEffect(() => {
+    const localData = localStorage.getItem("diary");
+    if (localData) {
+      const diaryList = JSON.parse(localData).sort(
+        (a, b) => parseInt(b.id) - parseInt(a.id)
+      );
+      dataId.current = parseInt(diaryList[0]) + 1;
+      dispatch({ type: "INIT", data: diaryList });
+    }
+  }, []);
+
+  const dataId = useRef(0); // dummy data 5번까지 존재하므로 6번부터 시작
 
   const onCreate = (date, content, emotion) => {
     dispatch({
