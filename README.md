@@ -1,7 +1,7 @@
 ## 나만의 감정 일기장
 
 - https://hanhee-diary-project.web.app/
-- React를 사용하여 CRUD 구현
+
 - React Hook 사용
   -   React Hook 이란, 리액트 v16.8에 새로 도입된 기능으로, 함수형 컴포넌트(Functional Component)에서 사용되는 몇가지 기술들
   -   useState: 함수형 또는 클래스형 컴포넌트의 상태를 관리하고, 변경할 수 있도록 도와주는 하나의 React Hook. (보통 관리해야 할 State가 1개일 경우 사용)
